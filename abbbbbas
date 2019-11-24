@@ -1,0 +1,41 @@
+package wordcountproject;
+import java.awt.event.*;  
+import javax.swing.*;  
+public class WordCountProject extends JFrame implements ActionListener{  
+JTextArea text;  
+JButton buttonWORD,buttonChar;  
+
+
+WordCountProject(){  
+   
+    text=new JTextArea();  
+    text.setBounds(50,50,300,200);  
+      
+    buttonWORD=new JButton("Word");  
+    buttonWORD.setBounds(50,300,100,30);  
+      
+    buttonChar=new JButton("Characters");  
+    buttonChar.setBounds(180,300,100,30);  
+    
+    buttonWORD.addActionListener(this);  
+    buttonChar.addActionListener(this);  
+    add(buttonWORD);add(buttonChar);add(text);  
+    setSize(400,400); 
+    setLayout(null);  
+    setTitle("Word Counter");
+    setVisible(true);  
+}  
+public void actionPerformed(ActionEvent result){  
+    String textst=text.getText();  
+    if(result.getSource()==buttonWORD){  
+        String words[]=textst.split("\\s");  
+        JOptionPane.showMessageDialog(this,"Total words: "+words.length);  
+    }  
+    if(result.getSource()==buttonChar){  
+        JOptionPane.showMessageDialog(this,"Total Characters:"+textst.length() +"\n *space Counts");  
+    }  
+}
+public static void main(String[] args) {  
+    new WordCountProject();  
+}
+}
